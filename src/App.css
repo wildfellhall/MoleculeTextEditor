@@ -1,1 +1,10 @@
+/* 
+  App-specific styles. 
+  Main styles are in index.css.
+*/
 
+.amorphous-background {
+  transition: filter 1s ease;
+}
+
+/* Add any App-specific layout or component overrides here */

@@ -1,0 +1,226 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&family=Syne:wght@700;800&family=Space+Mono:wght@400;700&family=Bricolage+Grotesque:wght@700;800&display=swap');
+
+:root {
+  /* Neobrutalist Vibrant Pastel Palette */
+  --color-yellow: #F4D35E;
+  --color-coral: #F28482;
+  --color-mint: #84A59D;
+  --color-peach: #F5CAC3;
+  --color-blue: #A8DADC;
+  --color-purple: #BDB2FF;
+  --color-acid: #FDFFB6;
+  
+  --black: #000000;
+  --white: #FFFFFF;
+  
+  --primary-color: var(--color-yellow);
+  --bg-color: var(--color-peach);
+  --text-dark: var(--black);
+  
+  /* Bold Typography */
+  --font-display: 'Archivo Black', sans-serif;
+  --font-bold: 'Anton', sans-serif;
+  --font-quirky: 'Syne', sans-serif;
+  --font-mono: 'Space Mono', monospace;
+  --font-main: 'Bricolage Grotesque', sans-serif;
+  
+  --border-width: 5px;
+  --shadow-offset: 10px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-color);
+  color: var(--text-dark);
+  font-family: var(--font-main);
+  overflow: hidden;
+  transition: background-color 0.2s steps(4); /* Snappy transitions */
+}
+
+#root {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.amorphous-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+  opacity: 1;
+}
+
+.blob {
+  position: absolute;
+  width: 60vw;
+  height: 60vw;
+  background: var(--primary-color);
+  border: var(--border-width) solid var(--black);
+  border-radius: 100px; /* More irregular but solid */
+  animation: move 10s infinite alternate steps(10);
+}
+
+.blob-1 { top: -20%; left: -20%; background: var(--color-yellow); }
+.blob-2 { bottom: -20%; right: -20%; background: var(--color-blue); animation-delay: -2s; }
+.blob-3 { top: 40%; left: 30%; background: var(--color-purple); animation-delay: -5s; width: 30vw; height: 30vw; }
+
+@keyframes move {
+  from { transform: translate(-5%, -5%) rotate(0deg); }
+  to { transform: translate(5%, 5%) rotate(5deg); }
+}
+
+.ui-container {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  max-width: 700px;
+  padding: 0 20px;
+  box-sizing: border-box;
+  z-index: 10;
+}
+
+.glass-card {
+  background: var(--white);
+  border: var(--border-width) solid var(--black);
+  box-shadow: var(--shadow-offset) var(--shadow-offset) 0px 0px var(--black);
+  padding: 24px;
+  width: 100%;
+  transition: transform 0.1s, box-shadow 0.1s;
+  position: relative;
+}
+
+.glass-card:active {
+  transform: translate(4px, 4px);
+  box-shadow: calc(var(--shadow-offset) - 4px) calc(var(--shadow-offset) - 4px) 0px 0px var(--black);
+}
+
+.input-field {
+  background: var(--white);
+  border: none;
+  border-bottom: var(--border-width) solid var(--black);
+  color: var(--black);
+  font-size: 3rem;
+  font-weight: 900;
+  width: 100%;
+  outline: none;
+  text-align: center;
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  padding: 10px 0;
+}
+
+.controls-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 15px;
+  width: 100%;
+}
+
+.control-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.control-label {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  background: var(--black);
+  color: var(--white);
+  padding: 4px 8px;
+  width: fit-content;
+}
+
+select, input[type="range"] {
+  background: var(--white);
+  border: 3px solid var(--black);
+  padding: 10px;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  color: var(--black);
+  outline: none;
+  cursor: pointer;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+  width: 100%;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.stat-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 900;
+}
+
+.stat-bar {
+  width: 100%;
+  height: 24px;
+  background: var(--white);
+  border: 3px solid var(--black);
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-fill {
+  height: 100%;
+  background: var(--primary-color);
+  transition: width 0.1s steps(5);
+  border-right: 3px solid var(--black);
+}
+
+.btn-brutalist {
+  background: var(--color-yellow);
+  border: 3px solid var(--black);
+  box-shadow: 4px 4px 0px 0px var(--black);
+  padding: 10px 20px;
+  font-family: var(--font-mono);
+  font-weight: 900;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.1s;
+}
+
+.btn-brutalist:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px 0px var(--black);
+}
+
+/* Customizing the range input for brutalism */
+input[type="range"] {
+  -webkit-appearance: none;
+  height: 15px;
+  background: var(--white);
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 25px;
+  height: 25px;
+  background: var(--black);
+  border: 2px solid var(--white);
+  cursor: pointer;
+}
